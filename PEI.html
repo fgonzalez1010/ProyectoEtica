@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Ético | Viaje de Transformación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --accent: #e63946;
+            --gold: #f4a261;
+            --light: #f8f9fa;
+            --soft: #a8dadc;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: var(--primary);
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26,26,46,0.8), rgba(22,33,62,0.9)), url('https://images.unsplash.com/photo-1505455184862-5548843f2954?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            background: linear-gradient(120deg, #f1faee, #f4a261);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .hero .lema {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            max-width: 700px;
+            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link i {
+            margin-right: 6px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin: 25px 0;
+            border-left: 4px solid var(--gold);
+        }
+
+        .card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3 i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        .sub-section {
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 2px solid var(--soft);
+        }
+
+        .sub-section h4 {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .sub-section h4::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+            transform: translateY(-2px);
+        }
+
+        .quote {
+            background: #f1faee;
+            border-left: 5px solid var(--gold);
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-left h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-right {
+            text-align: right;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .lema { font-size: 1.4rem; }
+            .navbar { flex-wrap: wrap; justify-content: center; padding: 12px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-right { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>PROYECTO ÉTICO INDIVIDUAL</h1>
+    <p class="subtitle">Por: Fernando Emmanuel Gonzalez Marroquin</p>
+    <p class="lema">"La verdadera victoria es vencerme a mí mismo cada día."</p>
+</header>
+
+<nav class="navbar">
+    <a href="#introduccion" class="nav-link"><i class="fas fa-book-open"></i>Introducción</a>
+    <a href="#principios" class="nav-link"><i class="fas fa-star"></i>Principios</a>
+    <a href="#votos" class="nav-link"><i class="fas fa-gem"></i>7 Votos</a>
+    <a href="#reflexiones" class="nav-link"><i class="fas fa-lightbulb"></i>Reflexiones</a>
+    <a href="#discurso" class="nav-link"><i class="fas fa-microphone"></i>Discurso</a>
+</nav>
+
+<div class="container">
+
+    <!-- INTRODUCCIÓN -->
+    <section class="section" id="introduccion">
+        <h2 class="section-title">Introduccion</h2>
+        <div class="card">
+            <p>Este Proyecto Ético Individual ha sido una experiencia de autodescubrimiento, crecimiento y fortalecimiento de mis valores. Durante ocho semanas, cada principio ético se convirtió en una oportunidad para pensar, actuar con más conciencia y mejorar mis relaciones en lo personal, lo familiar y lo laboral.
+            Más que una simple tarea académica, este proyecto fue un viaje hacia mi interior. Descubrí que la ética no es solo teoría, sino algo que se vive todos los días: en cómo hablo, cómo escucho, cómo perdono y cómo trato de ser justo. Cada principio desde la comunicación hasta la integridad me ayudó a entender que una vida plena se construye siendo coherente, empático y teniendo fe.</p>
+            <p>Los Siete Votos del Éxito reforzaron este aprendizaje, recordándome que la honestidad, la generosidad, el esfuerzo, la humildad, la buena organización, el sentido común y el autocontrol no son valores separados, sino parte de un mismo camino hacia una vida con propósito.</p>
+            <p>Además, las lecturas de “La vida no es lo que te imaginas” me ayudaron a ver la realidad de otra manera. Comprendí que mis pensamientos y actitudes influyen directamente en la forma en que vivo y en cómo me relaciono.</p>
+            <div class="quote">
+                "No cambio para impresionar al mundo; cambio para alinearme con mi versión más auténtica."
+            </div>
+        </div>
+    </section>
+
+    <!-- PRINCIPIOS ÉTICOS -->
+    <section class="section" id="principios">
+        <h2 class="section-title">Principios Éticos Aplicados</h2>
+
+        <!-- 1. Comunicación -->
+        <div class="card">
+            <h3><i class="fas fa-comments"></i> Comunicación</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> Comunicar es conectar con el otro mediante la verdad, la empatía y la claridad.</p>
+                <p><strong>Fecha:</strong> 30 de agosto de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> Decidí expresar con honestidad mis emociones en lugar de guardarlas, lo que mejoró mi bienestar.</li>
+                    <li><strong>Familiar:</strong> En una conversación con mis padres, expliqué cómo me sentía respecto a ciertas decisiones sin levantar la voz.</li>
+                    <li><strong>Laboral:</strong> En una reunión aclaré malentendidos con respeto y propuse una mejor forma de coordinar tareas.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que hablar con respeto y escuchar con empatía fortalece cualquier vínculo. Sentí alivio y orgullo al ver que podía comunicar sin tensión. El reto fue mantener la calma cuando otros no lo hacían.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>Los ambientes —familiar, laboral y personal— se tornaron más armoniosos. Hubo menos discusiones y más cooperación.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Seguiré cultivando una comunicación empática, basada en la escucha activa y la verdad.</p>
+            </div>
+            <div class="quote">
+                “Comunicar con amor es tender puentes donde antes había muros.”
+            </div>
+        </div>
+
+        <!-- 2. Comprender a las Personas -->
+        <div class="card">
+            <h3><i class="fas fa-heart"></i> Comprender a las Personas</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> Comprender es ver con los ojos del corazón, no solo con la mente.</p>
+                <p><strong>Fecha:</strong> 13 de septiembre de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> Me tomé tiempo para reflexionar sobre mis propias reacciones y comprender mis emociones.</li>
+                    <li><strong>Familiar:</strong> Cuando mi hermano reaccionó con enojo, decidí no responder igual, sino escuchar sus motivos.</li>
+                    <li><strong>Laboral:</strong> Un compañero se mostró irritable; lo escuché y supe que estaba presionado por entregas.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que comprender no significa justificar, sino acompañar. Sentí empatía y gratitud. El desafío fue no juzgar a la primera impresión.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>Las relaciones mejoraron en todos los ámbitos. Alguien comprendido, se abre más y responde con respeto.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Practicaré la empatía como hábito diario y evitaré reaccionar sin antes escuchar.</p>
+            </div>
+            <div class="quote">
+                “Comprender es abrir el alma para ver al otro como realmente es.”
+            </div>
+        </div>
+
+        <!-- 3. Motivar a las Personas -->
+        <div class="card">
+            <h3><i class="fas fa-star"></i> Motivar a las Personas</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> Motivar es encender en los demás el deseo de superarse.</p>
+                <p><strong>Fecha:</strong> 4 de octubre de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> Me animé a mí mismo a retomar metas que había postergado.</li>
+                    <li><strong>Familiar:</strong> Motivé a un primo a continuar sus estudios, recordándole su talento.</li>
+                    <li><strong>Laboral:</strong> Apoyé a una compañera que dudaba en liderar una presentación.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que la motivación se multiplica cuando se comparte. Sentí alegría y esperanza. El reto fue mantener mi energía en momentos de cansancio.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>Las personas cercanas mostraron más entusiasmo y seguridad. En casa se notó un ambiente más optimista.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Seré un ejemplo de energía positiva y motivación constante.</p>
+            </div>
+            <div class="quote">
+                “Motivar a otros es despertar el poder que ya habita en ellos.”
+            </div>
+        </div>
+
+        <!-- 4. Justicia -->
+        <div class="card">
+            <h3><i class="fas fa-balance-scale"></i> Justicia</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> La justicia es actuar con equidad, sin favoritismos, guiado por la verdad.</p>
+                <p><strong>Fecha:</strong> 11 de octubre de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> Decidí ser justo conmigo, reconociendo mis esfuerzos y no solo mis errores.</li>
+                    <li><strong>Familiar:</strong> Medié en un conflicto entre hermanos, buscando que ambos fueran escuchados.</li>
+                    <li><strong>Laboral:</strong> Defendí que se reconociera a un compañero por su mérito.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que la justicia nace de la conciencia y no del ego. Sentí satisfacción, aunque fue difícil mantenerme neutral.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>Se generó más confianza en mí. Mis decisiones inspiraron a otros a actuar con equidad.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Seguiré buscando la verdad antes de emitir juicios y seré coherente con mis valores.</p>
+            </div>
+            <div class="quote">
+                “Ser justo es elegir el bien aunque cueste.”
+            </div>
+        </div>
+
+        <!-- 5. Crítica -->
+        <div class="card">
+            <h3><i class="fas fa-comment-alt"></i> Crítica</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> La crítica constructiva busca mejorar, no herir.</p>
+                <p><strong>Fecha:</strong> 18 de octubre de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> Aprendí a aceptar las críticas sin sentirme atacado.</li>
+                    <li><strong>Familiar:</strong> Di una opinión a un familiar con respeto, sin juzgar.</li>
+                    <li><strong>Laboral:</strong> Corregí un informe con empatía y enfoque en la mejora.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que una crítica amorosa fortalece. Sentí serenidad al ver que mis palabras construían. El desafío fue elegir el tono adecuado.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>Los demás se mostraron más receptivos y confiados. Incluso yo me volví más abierto a recibir observaciones.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Daré y recibiré críticas con humildad, enfocándome en el aprendizaje.</p>
+            </div>
+            <div class="quote">
+                “Criticar con respeto es ofrecer una oportunidad de crecer.”
+            </div>
+        </div>
+
+        <!-- 6. Perdón -->
+        <div class="card">
+            <h3><i class="fas fa-handshake"></i> Perdón</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> El perdón libera del peso del resentimiento y abre paso a la paz.</p>
+                <p><strong>Fecha:</strong> 18 de octubre de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> Me perdoné por errores pasados y por ser demasiado exigente conmigo.</li>
+                    <li><strong>Familiar:</strong> Decidí reconciliarme con un pariente con quien tenía diferencias antiguas.</li>
+                    <li><strong>Laboral:</strong> Perdoné a un compañero que me había juzgado injustamente.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que perdonar no cambia el pasado, pero sí transforma el presente. Sentí libertad y alivio. El reto fue soltar el orgullo.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>El ambiente familiar y laboral mejoró. Las tensiones disminuyeron notablemente.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Practicaré el perdón constante, como acto de amor y madurez.</p>
+            </div>
+            <div class="quote">
+                “El perdón no es debilidad, es la fuerza de un corazón en paz.”
+            </div>
+        </div>
+
+        <!-- 7. Confiar en Dios -->
+        <div class="card">
+            <h3><i class="fas fa-pray"></i> Confiar en Dios</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> Confiar en Dios es aceptar que todo tiene un propósito, incluso lo que no entendemos.</p>
+                <p><strong>Fecha:</strong> 25 de octubre de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> En un momento de incertidumbre, entregué mis miedos en oración.</li>
+                    <li><strong>Familiar:</strong> Animé a mi familia a mantener la fe ante una dificultad económica.</li>
+                    <li><strong>Laboral:</strong> En medio de presión, decidí confiar en que todo saldría bien y mantener la calma.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que la fe es acción con serenidad. Sentí esperanza y consuelo. El desafío fue no dejarme dominar por la ansiedad.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>Transmití tranquilidad a quienes me rodeaban; se fortaleció el ánimo general.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Seguiré confiando en los planes divinos sin dejar de actuar con responsabilidad.</p>
+            </div>
+            <div class="quote">
+                “Confiar en Dios es caminar seguro aunque el camino no se vea.”
+            </div>
+        </div>
+
+        <!-- 8. Integridad -->
+        <div class="card">
+            <h3><i class="fas fa-shield-alt"></i> Integridad</h3>
+            <div class="sub-section">
+                <h4>Principio Ético Aplicado</h4>
+                <p><strong>Definición:</strong> La integridad es coherencia entre lo que se piensa, se dice y se hace.</p>
+                <p><strong>Fecha:</strong> 25 de octubre de 2025</p>
+                <p><strong>Entornos:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li><strong>Personal:</strong> Fui honesto conmigo al reconocer mis errores y mejorar.</li>
+                    <li><strong>Familiar:</strong> Enseñé con el ejemplo, cumpliendo mis promesas.</li>
+                    <li><strong>Laboral:</strong> Rechacé participar en una decisión que no era ética.</li>
+                </ul>
+            </div>
+            <div class="sub-section">
+                <h4>Reflexión Ética</h4>
+                <p>Aprendí que la integridad es el reflejo de los valores en acción. Sentí orgullo y serenidad. El reto fue enfrentar la presión social.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Impacto</h4>
+                <p>Gané respeto y credibilidad. Mis acciones inspiraron confianza en otros.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Compromiso a Futuro</h4>
+                <p>Seguiré actuando con autenticidad y honestidad, incluso en lo difícil.</p>
+            </div>
+            <div class="quote">
+                “La integridad es la luz que guía cuando nadie más está mirando.”
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 VOTOS DEL ÉXITO -->
+    <section class="section" id="votos">
+        <h2 class="section-title">Los 7 Votos del Éxito</h2>
+
+        <!-- 1. Honestidad -->
+        <div class="card">
+            <h3><i class="fas fa-gem"></i> 1. Voto de Honestidad</h3>
+            <div class="sub-section">
+                <h4>Propósito</h4>
+                <p>Comprometerme a vivir con transparencia, siendo coherente entre lo que pienso, digo y hago. La honestidad es la base de toda confianza y del verdadero éxito.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Personal</h4>
+                <p><strong>Valor a proteger:</strong> La sinceridad conmigo mismo y con los demás.<br>
+                <strong>Actitud a reforzar:</strong> La autenticidad.<br>
+                <strong>Enemigos a vencer:</strong> El miedo a decir la verdad, la autojustificación y la mentira “piadosa”.<br>
+                <strong>Compromisos:</strong><br>
+                • Reconocer mis errores sin excusas.<br>
+                • Decir la verdad aunque me perjudique momentáneamente.<br>
+                • Ser congruente entre mis palabras y mis acciones.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Familiar</h4>
+                <p><strong>Valor a proteger:</strong> La confianza.<br>
+                <strong>Actitud a reforzar:</strong> La transparencia en la comunicación.<br>
+                <strong>Enemigos a vencer:</strong> El silencio, el ocultar información y la desconfianza.<br>
+                <strong>Compromisos:</strong><br>
+                • Ser claro al expresar mis sentimientos y decisiones.<br>
+                • No ocultar errores ni culpar a otros.<br>
+                • Promover conversaciones honestas en el hogar.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Laboral</h4>
+                <p><strong>Valor a proteger:</strong> La ética profesional.<br>
+                <strong>Actitud a reforzar:</strong> La responsabilidad.<br>
+                <strong>Enemigos a vencer:</strong> La tentación de manipular información y el miedo a admitir fallos.<br>
+                <strong>Compromisos:</strong><br>
+                • Ser transparente en mis informes y tareas.<br>
+                • Cumplir mis promesas y plazos.<br>
+                • Reconocer los logros de los demás con justicia.</p>
+            </div>
+            <div class="quote">
+                “La honestidad no solo me hace digno de confianza, sino también libre.”
+            </div>
+        </div>
+
+        <!-- 2. Generosidad -->
+        <div class="card">
+            <h3><i class="fas fa-hands-helping"></i> 2. Voto de Generosidad</h3>
+            <div class="sub-section">
+                <h4>Propósito</h4>
+                <p>Servir con alegría, compartir mis talentos, tiempo y recursos con quienes me rodean, sin esperar nada a cambio.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Personal</h4>
+                <p><strong>Valor a proteger:</strong> La empatía.<br>
+                <strong>Actitud a reforzar:</strong> El desprendimiento.<br>
+                <strong>Enemigos a vencer:</strong> El egoísmo, la indiferencia y la comodidad.<br>
+                <strong>Compromisos:</strong><br>
+                • Dedicar tiempo a ayudar a alguien cada semana.<br>
+                • Practicar la gratitud a diario.<br>
+                • Compartir mis conocimientos con quienes lo necesiten.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Familiar</h4>
+                <p><strong>Valor a proteger:</strong> La solidaridad.<br>
+                <strong>Actitud a reforzar:</strong> El apoyo mutuo.<br>
+                <strong>Enemigos a vencer:</strong> El individualismo y la falta de empatía.<br>
+                <strong>Compromisos:</strong><br>
+                • Escuchar y apoyar emocionalmente a mis seres queridos.<br>
+                • Ayudar sin esperar reconocimiento.<br>
+                • Enseñar a los más jóvenes el valor de compartir.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Laboral</h4>
+                <p><strong>Valor a proteger:</strong> La cooperación.<br>
+                <strong>Actitud a reforzar:</strong> La colaboración desinteresada.<br>
+                <strong>Enemigos a vencer:</strong> La competencia desleal y el orgullo.<br>
+                <strong>Compromisos:</strong><br>
+                • Compartir información útil con mis compañeros.<br>
+                • Ofrecer ayuda cuando alguien lo necesite.<br>
+                • Celebrar los logros colectivos.</p>
+            </div>
+            <div class="quote">
+                “Ser generoso es dar sin calcular, porque todo lo que se comparte, crece.”
+            </div>
+        </div>
+
+        <!-- 3. Trabajo Duro -->
+        <div class="card">
+            <h3><i class="fas fa-hard-hat"></i> 3. Voto de Trabajo Duro</h3>
+            <div class="sub-section">
+                <h4>Propósito</h4>
+                <p>Asumir el compromiso de esforzarme al máximo en todo lo que hago, sin rendirme ante las dificultades.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Personal</h4>
+                <p><strong>Valor a proteger:</strong> La disciplina.<br>
+                <strong>Actitud a reforzar:</strong> La perseverancia.<br>
+                <strong>Enemigos a vencer:</strong> La pereza, la procrastinación y el desánimo.<br>
+                <strong>Compromisos:</strong><br>
+                • Cumplir mis metas diarias con determinación.<br>
+                • Mantener una rutina productiva.<br>
+                • Superar los fracasos con actitud positiva.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Familiar</h4>
+                <p><strong>Valor a proteger:</strong> El ejemplo y la responsabilidad.<br>
+                <strong>Actitud a reforzar:</strong> La constancia.<br>
+                <strong>Enemigos a vencer:</strong> El desmotivación y la falta de compromiso.<br>
+                <strong>Compromisos:</strong><br>
+                • Ser ejemplo de esfuerzo para mi familia.<br>
+                • Involucrarme activamente en las tareas del hogar.<br>
+                • Enseñar a mis hijos o familiares la importancia del trabajo bien hecho.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Laboral</h4>
+                <p><strong>Valor a proteger:</strong> La excelencia.<br>
+                <strong>Actitud a reforzar:</strong> La dedicación.<br>
+                <strong>Enemigos a vencer:</strong> El conformismo y la mediocridad.<br>
+                <strong>Compromisos:</strong><br>
+                • Cumplir mis tareas con calidad y puntualidad.<br>
+                • Buscar mejoras continuas en mi trabajo.<br>
+                • Mantener una actitud proactiva ante los desafíos.</p>
+            </div>
+            <div class="quote">
+                “El éxito no llega por suerte, sino por esfuerzo constante y pasión por mejorar.”
+            </div>
+        </div>
+
+        <!-- 4. Humildad -->
+        <div class="card">
+            <h3><i class="fas fa-seedling"></i> 4. Voto de Humildad</h3>
+            <div class="sub-section">
+                <h4>Propósito</h4>
+                <p>Reconocer mis limitaciones, aprender de los demás y actuar con sencillez, sin sentirme superior.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Personal</h4>
+                <p><strong>Valor a proteger:</strong> La sencillez.<br>
+                <strong>Actitud a reforzar:</strong> El agradecimiento.<br>
+                <strong>Enemigos a vencer:</strong> El orgullo y la soberbia.<br>
+                <strong>Compromisos:</strong><br>
+                • Aceptar las críticas con apertura.<br>
+                • Pedir ayuda cuando la necesite.<br>
+                • Practicar la gratitud diaria.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Familiar</h4>
+                <p><strong>Valor a proteger:</strong> El respeto mutuo.<br>
+                <strong>Actitud a reforzar:</strong> La disposición a servir.<br>
+                <strong>Enemigos a vencer:</strong> El deseo de tener siempre la razón.<br>
+                <strong>Compromisos:</strong><br>
+                • Escuchar antes de responder.<br>
+                • Pedir perdón cuando me equivoque.<br>
+                • Reconocer los aportes de cada miembro.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Laboral</h4>
+                <p><strong>Valor a proteger:</strong> La colaboración.<br>
+                <strong>Actitud a reforzar:</strong> La apertura al aprendizaje.<br>
+                <strong>Enemigos a vencer:</strong> La vanidad profesional.<br>
+                <strong>Compromisos:</strong><br>
+                • Aceptar nuevas ideas con humildad.<br>
+                • Reconocer el mérito de los demás.<br>
+                • Valorar el trabajo en equipo.</p>
+            </div>
+            <div class="quote">
+                “La humildad abre puertas donde el orgullo solo levanta muros.”
+            </div>
+        </div>
+
+        <!-- 5. Planificación Efectiva -->
+        <div class="card">
+            <h3><i class="fas fa-calendar-check"></i> 5. Voto de Planificación Efectiva</h3>
+            <div class="sub-section">
+                <h4>Propósito</h4>
+                <p>Organizar mi tiempo y mis recursos para alcanzar metas de manera eficiente, sin improvisar ni procrastinar.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Personal</h4>
+                <p><strong>Valor a proteger:</strong> La responsabilidad.<br>
+                <strong>Actitud a reforzar:</strong> La organización.<br>
+                <strong>Enemigos a vencer:</strong> El desorden y la falta de enfoque.<br>
+                <strong>Compromisos:</strong><br>
+                • Elaborar un plan semanal de actividades.<br>
+                • Priorizar tareas según importancia.<br>
+                • Revisar mis metas cada mes.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Familiar</h4>
+                <p><strong>Valor a proteger:</strong> El equilibrio y la convivencia.<br>
+                <strong>Actitud a reforzar:</strong> La coordinación.<br>
+                <strong>Enemigos a vencer:</strong> El caos y la falta de comunicación.<br>
+                <strong>Compromisos:</strong><br>
+                • Planificar tiempo de calidad familiar.<br>
+                • Distribuir responsabilidades equitativamente.<br>
+                • Anticipar compromisos importantes.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Laboral</h4>
+                <p><strong>Valor a proteger:</strong> La productividad.<br>
+                <strong>Actitud a reforzar:</strong> La eficiencia.<br>
+                <strong>Enemigos a vencer:</strong> La desorganización y la multitarea innecesaria.<br>
+                <strong>Compromisos:</strong><br>
+                • Usar herramientas de gestión de tiempo.<br>
+                • Establecer metas claras y medibles.<br>
+                • Evaluar resultados al final de cada semana.</p>
+            </div>
+            <div class="quote">
+                “Planificar es convertir los sueños en metas alcanzables.”
+            </div>
+        </div>
+
+        <!-- 6. Sentido Común -->
+        <div class="card">
+            <h3><i class="fas fa-lightbulb"></i> 6. Voto de Sentido Común</h3>
+            <div class="sub-section">
+                <h4>Propósito</h4>
+                <p>Tomar decisiones racionales y equilibradas, usando la razón y la experiencia para actuar con prudencia.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Personal</h4>
+                <p><strong>Valor a proteger:</strong> La prudencia.<br>
+                <strong>Actitud a reforzar:</strong> El juicio equilibrado.<br>
+                <strong>Enemigos a vencer:</strong> Las decisiones impulsivas y la desinformación.<br>
+                <strong>Compromisos:</strong><br>
+                • Pensar antes de actuar.<br>
+                • Evaluar consecuencias de mis decisiones.<br>
+                • Buscar consejo cuando sea necesario.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Familiar</h4>
+                <p><strong>Valor a proteger:</strong> La armonía.<br>
+                <strong>Actitud a reforzar:</strong> La reflexión.<br>
+                <strong>Enemigos a vencer:</strong> Las discusiones innecesarias y la falta de diálogo.<br>
+                <strong>Compromisos:</strong><br>
+                • Escuchar todas las opiniones antes de decidir.<br>
+                • Evitar decisiones tomadas en enojo.<br>
+                • Resolver conflictos con serenidad.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Laboral</h4>
+                <p><strong>Valor a proteger:</strong> La objetividad.<br>
+                <strong>Actitud a reforzar:</strong> La lógica y la prudencia.<br>
+                <strong>Enemigos a vencer:</strong> La improvisación y los prejuicios.<br>
+                <strong>Compromisos:</strong><br>
+                • Analizar información antes de actuar.<br>
+                • Consultar alternativas antes de decidir.<br>
+                • Aprender de la experiencia para mejorar.</p>
+            </div>
+            <div class="quote">
+                “El sentido común es la sabiduría aplicada a lo cotidiano.”
+            </div>
+        </div>
+
+        <!-- 7. Dominio Propio -->
+        <div class="card">
+            <h3><i class="fas fa-shield"></i> 7. Voto de Dominio Propio</h3>
+            <div class="sub-section">
+                <h4>Propósito</h4>
+                <p>Controlar mis impulsos, emociones y deseos, manteniendo equilibrio ante la adversidad y las tentaciones.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Personal</h4>
+                <p><strong>Valor a proteger:</strong> La autodisciplina.<br>
+                <strong>Actitud a reforzar:</strong> La serenidad.<br>
+                <strong>Enemigos a vencer:</strong> La ira, la impulsividad y la impaciencia.<br>
+                <strong>Compromisos:</strong><br>
+                • Practicar la respiración o pausa consciente antes de reaccionar.<br>
+                • No dejarme llevar por emociones momentáneas.<br>
+                • Mantener hábitos saludables.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Familiar</h4>
+                <p><strong>Valor a proteger:</strong> La paz en el hogar.<br>
+                <strong>Actitud a reforzar:</strong> La tolerancia.<br>
+                <strong>Enemigos a vencer:</strong> Las discusiones impulsivas y el orgullo.<br>
+                <strong>Compromisos:</strong><br>
+                • Controlar mi tono al discutir.<br>
+                • Escuchar antes de responder.<br>
+                • Ceder cuando sea necesario para mantener la armonía.</p>
+            </div>
+            <div class="sub-section">
+                <h4>Ámbito Laboral</h4>
+                <p><strong>Valor a proteger:</strong> La profesionalidad.<br>
+                <strong>Actitud a reforzar:</strong> La calma ante la presión.<br>
+                <strong>Enemigos a vencer:</strong> El estrés, la impaciencia y la reactividad.<br>
+                <strong>Compromisos:</strong><br>
+                • Tomar decisiones solo después de reflexionar.<br>
+                • Manejar el estrés con técnicas de relajación.<br>
+                • Mantener una actitud positiva en situaciones difíciles.</p>
+            </div>
+            <div class="quote">
+                “El dominio propio es la fuerza invisible que convierte el carácter en sabiduría.”
+            </div>
+        </div>
+    </section>
+
+    <!-- REFLEXIONES -->
+    <section class="section" id="reflexiones">
+        <h2 class="section-title">Reflexiones del Libro “La vida no es lo que te imaginas”</h2>
+
+        <!-- Capítulo 1 -->
+        <div class="card">
+            <h3><i class="fas fa-globe"></i> Capítulo 1: La cosmovisión</h3>
+            <p><strong>Contexto:</strong> El capítulo explica que cada persona interpreta el mundo desde su “cosmovisión”, es decir, su conjunto de valores, creencias y principios. Estos determinan cómo actúa y qué considera correcto o incorrecto.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Me hizo comprender que mis decisiones diarias reflejan mi sistema de valores. Si no elijo conscientemente los principios que guían mi vida, viviré según influencias externas.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> Empecé a priorizar la coherencia entre lo que creo y lo que hago. Ahora procuro actuar desde valores sólidos como la justicia, la fe y la integridad.</p>
+        </div>
+
+        <!-- Capítulo 2 -->
+        <div class="card">
+            <h3><i class="fas fa-book"></i> Capítulo 2: La sabiduría</h3>
+            <p><strong>Contexto:</strong> Este capítulo enseña que la sabiduría no se trata solo de conocimiento, sino de aplicar la verdad con equilibrio en cada situación.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Me ayudó a entender que las decisiones impulsivas o emocionales muchas veces me alejan de los mejores resultados. Ser sabio requiere calma, reflexión y aprender de la experiencia.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> He comenzado a analizar con mayor serenidad las situaciones antes de actuar, buscando siempre la opción más justa y prudente.</p>
+        </div>
+
+        <!-- Capítulo 3 -->
+        <div class="card">
+            <h3><i class="fas fa-user-graduate"></i> Capítulo 3: La madurez</h3>
+            <p><strong>Contexto:</strong> El texto resalta que la madurez no llega con la edad, sino con la capacidad de asumir responsabilidades, aprender del error y controlar las emociones.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Me hizo reflexionar sobre cuántas veces he actuado por orgullo o impulsividad. La madurez implica autocontrol, empatía y humildad.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> He procurado responder con serenidad ante los conflictos y pensar en las consecuencias de mis actos, en lugar de reaccionar con enojo o frustración.</p>
+        </div>
+
+        <!-- Capítulo 4 -->
+        <div class="card">
+            <h3><i class="fas fa-cloud"></i> Capítulo 4: Los pensamientos equivocados</h3>
+            <p><strong>Contexto:</strong> El capítulo muestra cómo las decepciones nacen muchas veces de expectativas irreales o pensamientos distorsionados sobre la vida, las personas o el éxito.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Me hizo ver que muchas frustraciones provienen de idealizar las cosas. Cambié mi enfoque hacia la gratitud por lo que tengo, en lugar de lamentarme por lo que falta.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> Ahora enfrento las dificultades con una mente más realista y positiva, aceptando que la vida no siempre es como quiero, pero siempre ofrece oportunidades para aprender.</p>
+        </div>
+
+        <!-- Capítulo 5 -->
+        <div class="card">
+            <h3><i class="fas fa-exclamation-triangle"></i> Capítulo 5: Conceptos erróneos</h3>
+            <p><strong>Contexto:</strong> El autor explica que muchas veces cargamos ideas erróneas sobre el amor, el éxito o la felicidad, y esas percepciones nos alejan de una vida plena.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Me ayudó a cuestionar creencias aprendidas que limitaban mi crecimiento. Comprendí que el éxito no se mide por lo que tengo, sino por quién soy y cómo vivo.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> He dejado de compararme con los demás y busco centrarme en mi propio proceso de mejora, valorando los pequeños logros y el crecimiento interior.</p>
+        </div>
+
+        <!-- Capítulo 6 -->
+        <div class="card">
+            <h3><i class="fas fa-smile"></i> Capítulo 6: La actitud</h3>
+            <p><strong>Contexto:</strong> Este capítulo enseña que la felicidad no depende de las circunstancias, sino de la actitud con la que se enfrentan. La gratitud y la aceptación son esenciales para vivir con paz.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Comprendí que quejarme o enfocarme en lo negativo solo aumenta el sufrimiento. La actitud determina la calidad de mis días.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> He aprendido a agradecer más y a mantener una actitud positiva incluso ante las dificultades, buscando siempre lo que puedo aprender de cada situación.</p>
+        </div>
+
+        <!-- Capítulo 7 -->
+        <div class="card">
+            <h3><i class="fas fa-users"></i> Capítulo 7: Las relaciones</h3>
+            <p><strong>Contexto:</strong> El texto explica que las relaciones influyen directamente en la felicidad y el crecimiento personal. Las relaciones sanas se basan en respeto, comunicación y empatía.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Me hizo reconocer la importancia de rodearme de personas que aporten paz, apoyo y valores similares. No todas las relaciones son beneficiosas, y está bien poner límites.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> He comenzado a cuidar más las amistades que edifican y a alejarme de relaciones conflictivas o negativas, priorizando la salud emocional.</p>
+        </div>
+
+        <!-- Capítulo 8 -->
+        <div class="card">
+            <h3><i class="fas fa-home"></i> Capítulo 8: La familia</h3>
+            <p><strong>Contexto:</strong> El capítulo enseña que la familia es el primer espacio donde se practica el amor, el perdón y el servicio. Ser parte de una familia implica contribuir al bienestar común.</p>
+            <p><strong>Influencia en mi forma de pensar:</strong> Me hizo valorar el papel que tengo dentro de mi familia, no solo como miembro, sino como ejemplo de valores y apoyo emocional.</p>
+            <p><strong>Cambio en mi estilo de vida:</strong> Procuro participar más activamente en las decisiones familiares, ofrecer ayuda sin que me lo pidan y cultivar la paciencia en la convivencia.</p>
+        </div>
+    </section>
+
+    <!-- DISCURSO FINAL -->
+    <section class="section" id="discurso">
+        <h2 class="section-title">Discurso Final: Mi Renacimiento Ético</h2>
+        <div class="card">
+            <p>
+            Hoy termino un proceso que realmente cambió mi forma de pensar, sentir y actuar. Este proyecto ético no solo me ayudó a entender los principios de una vida plena, sino a ponerlos en práctica con intención y compromiso.
+            Aprendí que la comunicación une, la comprensión acerca, la motivación anima, la justicia da confianza, la crítica constructiva ayuda a crecer, el perdón libera, la fe en Dios da paz y la integridad nos mantiene firmes. Cada experiencia me mostró mis aciertos y también lo que puedo mejorar.
+            Los Siete Votos del Éxito me recordaron que el verdadero logro no está en lo que tengo, sino en quién soy: alguien que busca actuar con honestidad, servir, trabajar con pasión y mantener el equilibrio interior.
+            El libro “La vida no es lo que te imaginas” me enseñó que no se trata de controlar todo lo que pasa, sino de elegir una buena actitud ante cada situación. Ser ético es esforzarse cada día por ser mejor y actuar con coherencia.
+            Hoy me siento agradecido por todo lo aprendido. Este proyecto me ayudó a fortalecer mis relaciones, a encontrar paz interior y a comprometerme a seguir viviendo con valores, fe y el deseo de hacer el bien donde esté.            </p>
+        </div>
+    </section>
+
+</div>
+
+<div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    ↑
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-left">
+            <h3>PROYECTO ÉTICO INDIVIDUAL</h3>
+            <p>Fernando Emmanuel Gonzalez Marroquin · 2025</p>
+        </div>
+        <div class="footer-right">
+            <p>“El poder no está en ganar, sino en nunca rendirse”</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    window.addEventListener('scroll', () => {
+        document.querySelector('.back-to-top').style.display = 
+            window.scrollY > 300 ? 'flex' : 'none';
+    });
+</script>
+
+</body>
+</html>
